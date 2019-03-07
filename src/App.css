@@ -1,6 +1,11 @@
+#app{
+  background-image: url(assets/fon.jpg);
+  /* background-size: cover; */
+}
+
 .smallfon{
-  background-image: url(assets/mainfon.jpg);
-  background-size: cover;
+  background-image: url(assets/mainfon1.jpg);
+
   width: 700px;
   margin: auto;
 }
@@ -12,7 +17,8 @@
 
 .addTextPost{
   margin: 0px 0px 5px 290px;
-  color: #545D66;
+  color: #BCD2FC;
+    /* color: #545D66; */
   font-size: 25px;
   font-weight: 700;
 }

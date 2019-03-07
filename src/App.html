@@ -1,0 +1,24 @@
+<div id="app">
+  <div class="smallfon">
+    <div class="blocktwitter"><img src="src/assets/twitter.png"  class="twitter"/></div>
+    <div class="addTextPost">Add a post</div>
+    <input type="text" v-model="createTitle" class="created"/>
+    <input type="text" v-model="createBody" class="created"/>
+    <div><button  @click="addPost()" class="addPost">AddPost</button></div>
+    <div class="post1">
+      <div class="yourPosts">Your Posts</div>
+      <ul>
+        <li v-for="(post, index) of posts" class="post">
+          <p><span class="boldText">Title:</span> {{ post.title }}</p>
+          <p><span class="boldText">Content:</span> {{ post.body }}</p>
+          <button  @click="deleteData(index, post.id)" class="buttonDelete">Delete</button>
+          <button @click="visiblePostID = post.id" class="buttonChange">Change</button>
+          <div v-if="visiblePostID === post.id" class="modalWindow">
+          <div><input  v-model="post.title" class="changePost"><input  v-model="post.body" class="changePost"></div>
+          <button type="button" @click="changePost(post.id, post.title, post.body)" class="apply">To apply</button>
+        </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

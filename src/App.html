@@ -19,6 +19,9 @@
         </div>
         </li>
       </ul>
+          <button type="button" @click="counter -=1" class="prev">Предыдущая</button>
+          <div class="counter">{{ counter }}</div>
+          <button type="button" @click="counter +=1" class="next">Следущая</button>
     </div>
   </div>
 </div>

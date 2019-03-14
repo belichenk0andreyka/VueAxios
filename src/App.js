@@ -5,6 +5,8 @@ export default {
   data () {
 
     return{
+      counter: 1,
+      zero: 0,
       posts: [],
       createTitle: '',
       createBody: '',
@@ -13,12 +15,21 @@ export default {
     }
   },
 
-    created(){
-      axios.get('http://jsonplaceholder.typicode.com/posts').then(response => {
-        this.posts = response.data
-      })
-    },
-    methods: {
+  watch: {
+      counter: function(newValue, oldValue) {
+          this.getData()
+      }
+  },
+  created(){
+      this.getData()
+   },
+   methods: {
+      getData() {
+          axios.get('http://jsonplaceholder.typicode.com/posts?_start=${this.counter}+${this.zero}&_limit=10').then(response => {
+              this.posts = response.data
+          })
+      },
+
         deleteData(index, id) {
           axios.delete('http://jsonplaceholder.typicode.com/posts/' + id)
                     .then(response => {
@@ -42,6 +53,6 @@ export default {
             title: title,
             body: body
           })
-        }
-      }
-    }
+        },
+      },
+  }

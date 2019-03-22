@@ -1,5 +1,16 @@
-<template src="./App.html"></template>
+<template>
+  <pagination></pagination>
+</template>
 
-<script src="./App.js"></script>
+<script>
+import Pagination from './Pagination.vue'
 
-<style src="./App.css"></style>
+export default {
+  components: {
+    Pagination
+  }
+}
+</script>
+
+<style>
+</style>

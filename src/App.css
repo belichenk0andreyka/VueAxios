@@ -162,11 +162,22 @@ box-shadow: -1px 3px 19px -7px rgba(0,0,0,0.13);
 
   }
 
+  .prev{
+    float: left;
+    position: absolute;
+    margin-left: 50px;
+  }
+
+  .next{
+    margin-left: 540px;
+    position: absolute;
+    }
+
   .item{
     display: inline-block;
-  width: 20px;
+  width: 25px;
   height: 20px;
-  margin: 10px;
+  margin: 0px 10px 0px 10px;
 
   text-align: center;
   border: solid 1px #333;
@@ -175,4 +186,14 @@ box-shadow: -1px 3px 19px -7px rgba(0,0,0,0.13);
   }
   .selected{
     background: #ccc;
+}
+
+.pagin{
+  margin-left: 90px;
+  float: left;
+  position: absolute;
+}
+.allpagination{
+  padding-top: 10px;
+  height: 40px;
 }

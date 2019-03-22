@@ -19,13 +19,18 @@
       </div>
       </li>
     </ul>
-    <button type="button" @click="page -=1" v-if="page > 0" class="prev"><<</button>
+    <div class="allpagination">
+      <button type="button" @click="page -=1" v-if="page > 0" class="prev"><<</button>
+  <div class="pagin">
     <button class="item"
             v-for="n in evenPosts"
             :key="n.id"
             v-bind:class="{'selected': current === n.id}"
-            v-on:click="setCurrent(n.id)">{{ n }} </button>
-    <button type="button" @click="page +=1" class="next" v-if="page < evenPosts-1">>></button>
+            @click="page=n-1">{{ n }} </button>
+  </div>
+      <button type="button" @click="page +=1" class="next" v-if="page < evenPosts-1">>></button>
+    </div>
+
   </div>
   </div>
 </div>

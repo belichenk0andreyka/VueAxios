@@ -8,8 +8,9 @@
       <div><button  @click="addPost()" class="addPost">AddPost</button></div>
     <div class="post1">
       <div class="yourPosts">Your Posts</div>
+      <input type="text" v-model="search" autofocus />
       <ul>
-        <li v-for="(post, index) of paginatedData" class="post">
+        <li v-for="(post, index) of filteredAndOrdered" class="post">
           <p><span class="boldText">Title:</span> {{ post.title }}</p>
           <p><span class="boldText">Content:</span> {{ post.body }}</p>
           <button  @click="deleteData(index, post.id)" class="buttonDelete">Delete</button>
@@ -44,6 +45,7 @@ export default {
   el: "#app",
   data () {
     return {
+      search: '',
       current: null,
       page: 0,
       posts: [],
@@ -68,7 +70,20 @@ export default {
       paginatedData() {
         const start = this.page * 10;
         const end = start + 10;
-        return this.posts.slice(start, end);
+        return _.orderBy(this.posts.slice(start, end), 'name');
+      },
+      filteredPosts() {
+        return this.posts.filter((post) => {
+          return post.title.match(this.search);
+        });
+      },
+      filteredAndOrdered: function() {
+        const filtered = this.posts.filter(post =>
+           post.title.match(this.search)
+        );
+        const start = this.page * 10;
+        const end = start + 10;
+        return _.orderBy(this.posts.slice(start, end), 'name');
       }
     },
     methods: {
@@ -298,7 +313,7 @@ export default {
       }
       .selected{
         background: #ccc;
-    } 
+    }
 
     .pagin{
       margin-left: 90px;
@@ -308,5 +323,5 @@ export default {
     .allpagination{
       padding-top: 10px;
       height: 40px;
-}
+    }
 </style>
